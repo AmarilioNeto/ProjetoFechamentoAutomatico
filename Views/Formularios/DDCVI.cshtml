@@ -1,0 +1,152 @@
+﻿@model IEnumerable<ProjetoFechamentoAutomatico.Models.Formularios.DDCVI>
+
+<p>
+    <a asp-action="Planilha" class="btn btn-primary"> Atualizar Planilha</a>
+</p>
+<div class=" row justify-content-center">
+    <style>
+        .colorGreen {
+            background-color: mediumseagreen;
+        }
+
+        .colorRed {
+            background-color: firebrick;
+            color: azure;
+        }
+    </style>
+    
+    <div>
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Success:">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </svg>
+            <div class="text-center">
+                Planilha DD-CVI carregada com sucesso
+            </div>
+
+        </div>
+    </div>
+        <table class=" table table-bordered border-primary table-responsive-md">
+            <thead class="table table-dark table-striped">
+                <tr>
+                    <th>
+                        Red
+                    </th>
+                    <th>
+                        Código
+                    </th>
+                    <th>
+                        Unid
+                    </th>
+                    <th>
+                        Descrição
+                    </th>
+                    <th>
+                        Dep
+                    </th>
+                    <th>
+                        Mov
+                    </th>
+                    <th>
+                        Data
+                    </th>
+                    <th>
+                        Docto
+                    </th>
+                    <th>
+                        Forne
+                    </th>
+                    <th>
+                        Quant E
+                    </th>
+                    <th>
+                        Unit
+                    </th>
+                    <th>
+                        Entradas
+                    </th>
+                    <th>
+                        Quant S
+                    </th>
+                    <th>
+                        Unit
+                    </th>
+                    <th>
+                        Saídas
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table table-success table-striped">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Red)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Codigo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Unid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mov)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Docto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Forne)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuantE)
+                        </td>
+                        @if (item.Unit != null && item.Unit != " ")
+                        {
+                            <td class="colorGreen">
+                                @Html.DisplayFor(modelItem => item.Unit)
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Unit)
+                            </td>
+                        }
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Entradas)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.QuantS)
+                        </td>
+                        @if (item.UnitS != null)
+                        {
+                            <td class="colorRed">
+                                @Html.DisplayFor(modelItem => item.UnitS)
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitS)
+                            </td>
+                        }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Saidas)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+   

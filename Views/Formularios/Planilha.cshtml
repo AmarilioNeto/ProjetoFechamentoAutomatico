@@ -1,0 +1,126 @@
+﻿@model IEnumerable<ProjetoFechamentoAutomatico.Models.Formularios.Formularios>
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<div class=" row justify-content-center">
+    <style>
+        .colorGreen {
+            background-color: mediumseagreen;
+        }
+    </style>
+    <div>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            <div class="text-center">
+                Você realmente deseja atualizar esses valores
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="form-group row justify-content-center">
+                <a asp-action="Confirmado" class="align-items-start">
+                    <input type="submit" value="Sim" class="btn btn-primary" />
+                </a>
+                <a asp-action="NaoConfirmado" class="align-items-end">
+                    <input type="submit" value="Não" class="btn btn-danger" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <table class=" table table-bordered border-primary table-responsive-md">
+        <thead class="table table-dark table-striped">
+            <tr>
+                <th>
+                    Red
+                </th>
+                <th>
+                    Código
+                </th>
+                <th>
+                    Unid
+                </th>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Dep
+                </th>
+                <th>
+                    Mov
+                </th>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Docto
+                </th>
+                <th>
+                    Forne
+                </th>
+                <th>
+                    Quant E
+                </th>
+                <th>
+                    Unit
+                </th>
+                <th>
+                    Entradas
+                </th>
+            </tr>
+        </thead>
+        <tbody class="table table-success table-striped">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Red)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Unid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dep)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mov)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Docto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Forne)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantE)
+                    </td>
+                    @if (item.Unit != null && item.Unit != " ")
+                    {
+                        <td class="colorGreen">
+                            @Html.DisplayFor(modelItem => item.Unit)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Unit)
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Entradas)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

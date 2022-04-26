@@ -1,0 +1,114 @@
+﻿@model ProjetoFechamentoAutomatico.Models.Pessoa.Pessoa
+<div class="container">
+    <style>
+        .custom {
+            padding: initial;
+            background-color: lightblue;
+            border-block-color: black;
+            border-radius: 10px
+        }
+
+        .btn-icon {
+            padding: 8px;
+            background: #ffffff;
+        }
+    </style>
+
+    <h4 class="text-center">Cadastro de Usuário</h4>
+    <hr />
+    <div class="custom">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="SalvarUsario">
+                    @if (TempData["Cadastro"] != null)
+                    {
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            <div class="container">
+                                <div class="text-cent">
+                                    @TempData["Cadastro"]
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    @if (TempData["Erro Usuario"] != null)
+                    {
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </svg>
+                            <div class="container">
+                                <div class="text-cent">
+                                    @TempData["Erro Usuario"]
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <div class="text-center">
+                            <label asp-for="NOME" class="control-label"></label>
+                            <input asp-for="NOME" class="form-control" />
+                            <span asp-validation-for="NOME" class="text-danger" value="O Nome deve ser Informado"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <label asp-for="USUARIO" class="control-label">USUÁRIO</label>
+                            <input asp-for="USUARIO" class="form-control" />
+                            <span asp-validation-for="USUARIO" class="text-danger" Value="O Usuario deve ser informado"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <label asp-for="SETOR" class="control-label"></label>
+                            <input asp-for="SETOR" class="form-control" />
+                            <span asp-validation-for="SETOR" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <label asp-for="CARGO" class="control-label"></label>
+                            <input asp-for="CARGO" class="form-control" />
+                            <span asp-validation-for="CARGO" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <label asp-for="SENHA" class="control-label"></label>
+                            <input asp-for="SENHA" class="form-control" type="password" />
+                            <span asp-validation-for="SENHA" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <label asp-for="EMAIL" class="control-label">E-MAIL</label>
+                            <input asp-for="EMAIL" class="form-control" />
+                            <span asp-validation-for="EMAIL" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class=" form-group">
+                       
+                            <label asp-for="PERFIL" calss="control-label">PERFIL APROVADOR?</label>
+                            <input asp-for=" PERFIL"  type="checkbox" value="PERFIL"  aria-label="Text input with checkbox"/>
+                       
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
