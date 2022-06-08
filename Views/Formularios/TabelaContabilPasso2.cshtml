@@ -1,0 +1,253 @@
+﻿@model IEnumerable<ProjetoFechamentoAutomatico.Models.Formularios.Tblmovimentacao>
+
+<p>
+    <a asp-action="Update" class="btn btn-primary">alterar tabela</a>
+</p>
+@*@if(ViewData["linhaPosicao"] != null)
+            {
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </svg>
+    <div class="text-center">
+        @ViewData["linhaPosicao"]
+    </div>
+
+</div>
+            }*@
+<table class="table table-bordered border-primary table-responsive-md" ">
+    <thead class="table table-dark table-striped">
+        <tr>
+            <th>
+                Número do Movimento
+            </th>
+            <th>
+                Situação
+            </th>
+            <th>
+                Reduzido
+            </th>
+            <th>
+                Operação
+            </th>
+            <th>
+                Tipo de MOvimento
+            </th>
+            <th>
+                Movimento Confirmado
+            </th>
+            <th>
+                Número do Documento
+            </th>
+            <th>
+                Data do Documento
+            </th>
+            <th>
+                Data de Conf. do Documento
+            </th>
+            <th>
+                Concentração Real de Insu.
+            </th>
+            <th>
+                Lote
+            <th>
+                Qualidade
+            </th>
+            <th>
+                Preço sem Taxa
+            </th>
+            <th>
+                Preço
+            </th>
+            <th>
+                Preço Medio
+            </th>
+            <th>
+                Quantidade Real
+            </th>
+            <th>
+                Quantidade Prevista
+            </th>
+            <th>
+                Volumes
+            </th>
+            <th>
+                Destino
+            </th>
+            <th>
+                Seção
+            </th>
+            <th>
+                Deposito
+            </th>
+            <th>
+                Conta Contabil
+            </th>
+            <th>
+                Conta Contabil de Saida
+            </th>
+            <th>
+                Gera Estoque Bloquea
+            </th>
+            <th>
+                Conta Numerada
+            </th>
+            <th>
+                Tipo Reprocesso
+            </th>
+            <th>
+                Quantidade Balanço
+            </th>
+            <th>
+                Documento Sintetico
+            </th>
+            <th>
+                Deposito Custo
+            </th>
+            <th>
+                Valor Moviemnto Custo
+            </th>
+            <th>
+                Id Pessoa Fj
+            </th>
+            <th>
+                Id Procedencia
+            </th>
+            <th>
+                |CD Filial
+            </th>
+            <th>
+                Tp Movimento
+            </th>
+            <th>
+                Hr Movimento
+            </th>
+            <th>
+                tI status Integração
+            </th>
+            <th>
+                Codred. Usuario
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="table table-success table-striped">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NUMERO_MOVIMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SITUACAO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REDUZIDO_ITEM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OPERACAO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NUM_TIPO_MOVIMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MOV_CONFIRMADO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NUM_DOCUMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DATA_DOCUMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DATA_CONF_DOCUMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CONCENTRACAOREALINSU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOTE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QUALIDADE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRECO_SEM_TAXA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRECO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRECO_MEDIO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QUANTIDADE_REAL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QUANTIDADE_PREVISTA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VOLUMES)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESTINO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SECAO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DEPOSITO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CONTA_CONTABIL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CONTA_CONTABIL_SAIDA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GERA_ESTOQUE_BLOQUEA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CONTA_NUMERADA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIPO_REPROCESSO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QUANTIDADE_BALANCO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOCUMENTO_SINTETICO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DEPOSITO_CUSTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALOR_MOVIMENTO_CUST)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDPESSOASFJ)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDPROCEDENCIA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CDFILIAL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TPMOVIMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HRMOVIMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TISTATUSINTEGRACAO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CODREDUSUARIO)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

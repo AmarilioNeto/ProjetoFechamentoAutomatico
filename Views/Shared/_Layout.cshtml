@@ -22,39 +22,66 @@
         </style>
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            
-                <div class="container color">
-                    <div class="row justify-content-start">
+            @if (ViewData ["exibir login"] != null)
+            {
+
+            <div class="container color">
+                <div class="row justify-content-start">
+                    <div>
+
+                        <i class="fa-solid fa-user"></i>
+                        <a class="navbar-brand" asp-area="" asp-controller="Pessoa" asp-action="Login">Login</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-house"></i>
+                        <a class="navbar-brand" asp-area="" asp-controller="Pessoa" asp-action="Home">Home</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1"></ul>
+                        </div>
+                    </div>
+                    @if (ViewData["Exibir"] != null)
+                    {
                         <div>
-                             
-                            <i class="fa-solid fa-user"></i>
-                            <a class="navbar-brand" asp-area="" asp-controller="Pessoa" asp-action="Login">Login</a>
+                            <i class="fa-solid fa-arrow-up-right-dots"></i>
+                            <a class="navbar-brand" asp-area="" asp-controller="Pessoa" asp-action="DDCVI">DD-CVI</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                                     aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                                <ul class="navbar-nav flex-grow-1">
-                                </ul>
+                                <ul class="navbar-nav flex-grow-1"></ul>
                             </div>
                         </div>
-                        @if (ViewData["Exibir"] != null)
-                        {
-                            <div>
-                                <i class="fa-solid fa-house"></i>
-                                <a class="navbar-brand" asp-area="" asp-controller="Pessoa" asp-action="Home">Home</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                                        aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                                    <ul class="navbar-nav flex-grow-1"></ul>
-                                </div>
+
+                        <div>
+                            <i class="fa-solid fa-arrow-down-up-across-line"></i>
+                            <a class="navbar-brand" asp-area="" asp-controller="Pessoa" asp-action="TipoMovimento">Tipo de Movimento</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                                <ul class="navbar-nav flex-grow-1"></ul>
                             </div>
-                        }
-                    </div>
+                        </div>
+                    }
                 </div>
-                  
+        </div>
+            }
+
         </nav>
     </header>
 

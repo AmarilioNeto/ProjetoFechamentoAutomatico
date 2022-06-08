@@ -1,0 +1,44 @@
+﻿@model ProjetoFechamentoAutomatico.Models.Formularios.TipoMovimentoContabil
+
+<div class="container">
+    <h4 class="row justify-content-center">Tipo de Movimento</h4>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-md-12 row justify-content-center">
+            <form asp-action="PlanilhaTipoMovimentoContabilConfirmar">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group row justify-content-center col-md-12 text-dark ">Tipo de Movimento</div>
+                <div class="row g-3 justify-content-center ">
+                    <div class="col">
+                        <input asp-for="DETipoMov" type="text" class="form-control" placeholder="DE:" aria-label="DE:">
+                    </div>
+                    <div class="col">
+                        <input asp-for="PARATipoMov" type="text" class="form-control" placeholder="PARA:" aria-label="PARA:">
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row justify-content-center col-md-12 text-dark ">Conta de Contrapartida</div>
+                <div class="row g-3 justify-content-center ">
+                    <div class="col">
+                        <input asp-for="DEContaContrapartida" type="text" class="form-control" placeholder="DE:" aria-label="DE:">
+                    </div>
+                    <div class="col">
+                        <input asp-for="PARAContaContrapartida" type="text" class="form-control" placeholder="PARA:" aria-label="PARA:">
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row justify-content-center">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

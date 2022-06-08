@@ -1,5 +1,6 @@
-﻿@*@model ProjetoFechamentoAutomatico.Models.Pessoa.Pessoa*@
-@model IEnumerable<ProjetoFechamentoAutomatico.Models.Pessoa.Pessoa>
+﻿
+@model ProjetoFechamentoAutomatico.Models.Pessoa.Pessoa
+
 <style>
     /* reset */
     * {
@@ -23,7 +24,7 @@
         }
 
     .menu {
-        position: initial;
+        position: absolute;
         top: 0;
         left: 0;
         background: #fff;
@@ -45,9 +46,8 @@
             background: #fff url(https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png) 50% 50%/25px 25px no-repeat;
         }
 
-
         .menu ul li > label {
-            background: url(https://br.freepik.com/fotos-premium/mercado-de-acoes-ou-grafico-de-negociacao-forex_5019443.htm#query=grafico%20financeiro&position=41&from_view=search) 95% 50%/16px 16px no-repeat;
+            background: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-right-b-128.png) 95% 50%/16px 16px no-repeat;
         }
 
         .menu ul li a, .menu ul li label {
@@ -84,7 +84,7 @@
     }
 
     body {
-        background: url(https://img.myloview.com.br/quadros/diagrama-financeiro-com-grafico-de-velas-grafico-financeiro-em-uma-tela-de-monitor-de-computador-relatorio-de-mercado-sobre-fundo-azul-negocios-a-crescer-na-alta-tendencia-ativa-e-baixa-tendencia-700-154041069.jpg) 50% 50% / cover;
+        background: url(https://img.myloview.com.br/quadros/diagrama-financeiro-com-grafico-de-velas-grafico-financeiro-em-uma-tela-de-monitor-de-computador-relatorio-de-mercado-sobre-fundo-azul-negocios-a-crescer-na-alta-tendencia-ativa-e-baixa-tendencia-700-154041069.jpg) 45% 45%/cover;
     }
 
     p {
@@ -126,69 +126,71 @@
 </style>
 
 <div id="wrapper">
-    @*<div id="info">
-            <div id="info-content">
-                <h1>Multi level <strong>CSS-only push menu</strong></h1>
-                <p>&lt;noscript&gt;No javascript required&lt;/noscript&gt;</p>
+    <div id="info">
+        <div id="info-content">
+            <form asp-action="DDCVI" method="post" enctype="multipart/form-data" class="button  row justify-content-center">
+                <div class="form-group">
+                    <h4>
+                        DD-CVI
+                    </h4>
+                    <input id="formFile" type="file" class="form-control" name="formFile" />
+                    <button type="submit" class=" btn btn-success">Abrir planilha DD-CVI</button>
+                </div>
+            </form>
+        </div>
+
+        @if (TempData["mensagemErro 1"] != null)
+        {
+
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg>
+                <div class="text-center">
+                    @TempData["mensagemErro 1"]
+                </div>
+
             </div>
-        </div>*@
+        }
+    </div>
+
 
     <input type="checkbox" id="menu" name="menu" class="menu-checkbox">
     <div class="menu">
         <label class="menu-toggle" for="menu"><span>Toggle</span></label>
-        <ul >
+        <ul>
             <li>
-                <a> <h3>Bem Vindo!!!</h3> </a>
-                <a><h5><i class="fa-solid fa-user"></i>  @TempData["USUARIO"] </h5></a>
+                <a><h5>Usuário:</h5></a>
+                <a><h5><i class="fa-solid fa-user"></i>  @TempData["USUARIO"]</h5></a>
             </li>
             <hr />
-            <li >
-                <a asp-action="DDCVI" id ="1">
-                    DD-CVI
-                </a>
+            <li>
+                <a asp-action="Home">Home</a>
             </li>
             <li>
-                <a asp-action="TipoMovimento" id ="2">
+                <a asp-action="TipoMovimento">
                     Tipo de Movimento
                 </a>
             </li>
 
-            <li>
-                @*<a asp-action="Home" id="3">
-                    Movimento Contabil
-                </a>*@
-                <a asp-action="TipoMovimentoContabil" id="3">
-                    Movimento Contabil
+            @*<li>
+                <a href="#">
+                    Tipo de Movimento e Conta de Contrapartida
                 </a>
+            </li>*@
+            <li>
+
             </li>
             <li>
 
             </li>
-
             <li>
                 <a>
                     <img src="~/cvi_logo.png" />
                 </a>
             </li>
-            <li>
-
-            </li>
-
-            @if (ViewData["CadastroUsuario"] != null)
-            {
-                <li>
-                    <a asp-action="Cadastro">Cadastrar Usuário</a>
-                </li>
-
-            }
         </ul>
 
     </div>
 
-</div>
-
-
-
-
-
-
+</div><!-- #wrapper -->

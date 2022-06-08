@@ -1,0 +1,217 @@
+﻿@model IEnumerable<ProjetoFechamentoAutomatico.Models.Formularios.TipoMovimento>
+
+@if (TempData["erro form"] == null)
+{
+    <p>
+        <a asp-action="PlanilhaTipoMovimento" class="btn btn-primary"> Atualizar Planilha</a>
+    </p>
+}
+<div class=" row justify-content-center">
+    @if (TempData["erro form"] == null)
+    {
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Success:">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </svg>
+            <div class="text-center">
+                Planilha carregada com sucesso
+            </div>
+
+        </div>
+    }
+    else
+    {
+
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            <div class="text-center">
+                @TempData["erro form"]
+            </div>
+
+        </div>
+    }
+
+</div>
+@if (TempData["erro form"] == null)
+{
+    <table class="table table-bordered border-primary table-responsive-md">
+        <thead class="table table-dark table-striped">
+            <tr>
+                <th>
+                    Reduzido
+                </th>
+                <th>
+                    Código Industrial
+                </th>
+                <th>
+                    Unid.Med.
+                </th>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Depósito
+                </th>
+                <th>
+                    Tipo Mov.
+                </th>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Num.Docto
+                </th>
+                <th>
+                    Fornecedor
+                </th>
+                <th>
+                    Quant Entradas
+                </th>
+                <th>
+                    $ Entra Unit
+                </th>
+                <th>
+                    $ Entradas
+                </th>
+                <th>
+                    Quant Saídas
+                </th>
+                <th>
+                    $ Saida Unit
+                </th>
+                <th>
+                    $ Saídas
+                </th>
+                <th>
+                    Série NFE
+                </th>
+                <th>
+                    Natureza Operação
+                </th>
+                <th>
+                    Destaca ICMS
+                </th>
+                <th>
+                    Destaca PIS
+                </th>
+                <th>
+                    Destaca Cofins
+                </th>
+                <th>
+                    Destaca IPI
+                </th>
+                <th>
+                    Destaca Frete
+                </th>
+                <th>
+                    ICMS Frete
+                </th>
+                <th>
+                    PIS Frete
+                </th>
+                <th>
+                    Cofins Frete
+                </th>
+                <th>
+                    Conta do Estoque
+                </th>
+                <th>
+                    Conta de Contrapartida
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table table-success table-striped">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reduzido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoIndustrial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnidMed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deposito)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoMov)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumDocto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fornecedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantEntradas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntraUnit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Entradas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantSaidas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SaidaUnit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Saidas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SerieNFE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NaturezaOperacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DestacaICMS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DestacaPIS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DestacaCofins)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DestacaIPI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DestacaFrete)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ICMSFrete)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PISFrete)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CofinsFrete)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContaEstoque)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContaContrapartida)
+                    </td>
+                    <td>                     
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
