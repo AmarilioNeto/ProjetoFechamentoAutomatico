@@ -16,8 +16,13 @@ namespace ProjetoFechamentoAutomatico.Models.Pessoa
 
     class ConexaoOracle
     {
-        public string conexaoOracle = @"DATA SOURCE=(DESCRIPTION=(ADDRESS_LIST=
-(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.29)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=tubdhmlg)));User Id=teste;Password=teste;";
+        //conexão com base de teste
+                public string conexaoOracle = @"DATA SOURCE=(DESCRIPTION=(ADDRESS_LIST=
+        (ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.29)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=tubdhmlg)));User Id=teste;Password=teste;";
+
+      // conexão com base de produção
+//        public string conexaoOracle = @"DATA SOURCE=(DESCRIPTION =(ADDRESS_LIST =
+//(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.10)(PORT = 1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME = tubdprd)));User Id = valenca;Password = valenca;";
 
         public OracleConnection conexaoOra;
         public OracleCommand Command;
@@ -30,7 +35,7 @@ namespace ProjetoFechamentoAutomatico.Models.Pessoa
             //Pessoa pessoa1 = new Pessoa();
             conexaoOra = new OracleConnection(conexaoOracle);            
             Command = conexaoOra.CreateCommand();          
-           Command.CommandText = @"select IdPessoa, acesso from tbl_pessoa where usuario = '" + pessoa.USUARIO + "'and senha = '"+pessoa.SENHA + "'";           
+           Command.CommandText = @"select IdPessoa, acesso, usuario, perfil from tbl_pessoa where usuario = '" + pessoa.USUARIO + "'and senha = '"+pessoa.SENHA + "'";           
            conexaoOra.Open();         
             OracleDataReader dr = Command.ExecuteReader();
             dr.Read();
@@ -40,7 +45,7 @@ namespace ProjetoFechamentoAutomatico.Models.Pessoa
                 
                 pessoa.IDPESSOA = Convert.ToInt32(dr["IDPESSOA"]);
                 pessoa.ACESSO = dr["ACESSO"].ToString();
-             
+                pessoa.PERFIL = dr["PERFIL"].ToString();
            }       
            else
             {
@@ -50,7 +55,33 @@ namespace ProjetoFechamentoAutomatico.Models.Pessoa
             conexaoOra.Close();            
             return pessoa;                          
         }
-      
+
+        public Pessoa Conectarhome(Pessoa pessoa)
+        {
+            //Pessoa pessoa1 = new Pessoa();
+            conexaoOra = new OracleConnection(conexaoOracle);
+            Command = conexaoOra.CreateCommand();
+            Command.CommandText = @"select IdPessoa, acesso, usuario, perfil from tbl_pessoa where IdPessoa = "+ pessoa.IDPESSOA +"";
+            conexaoOra.Open();
+            OracleDataReader dr = Command.ExecuteReader();
+            dr.Read();
+
+            if (dr.HasRows)
+            {
+
+                pessoa.IDPESSOA = Convert.ToInt32(dr["IDPESSOA"]);
+                pessoa.ACESSO = dr["ACESSO"].ToString();
+                pessoa.PERFIL = dr["PERFIL"].ToString();
+            }
+            else
+            {
+                pessoa.IDPESSOA = 0;
+            }
+            dr.Close();
+            conexaoOra.Close();
+            return pessoa;
+        }
+
         public Pessoa inserirUsuario(Pessoa pessoa)
         {
             
@@ -65,7 +96,7 @@ namespace ProjetoFechamentoAutomatico.Models.Pessoa
             {
                 Command.CommandText = @"insert into tbl_pessoa
 (idpessoa, nome, usuario,setor,cargo,senha,email,acesso,perfil) 
-values(sq_usuarios_cad.nextval,'" + pessoa.NOME + "','" + pessoa.USUARIO + "','" + pessoa.SETOR + "','" + pessoa.CARGO + "','" + pessoa.SENHA + "','" + pessoa.EMAIL + "','NAO',"+pessoa.PERFIL+")";
+values(sq_usuarios_cad.nextval,'" + pessoa.NOME + "','" + pessoa.USUARIO + "','" + pessoa.SETOR + "','" + pessoa.CARGO + "','" + pessoa.SENHA + "','" + pessoa.EMAIL + "','0', 1)";
                 Command.ExecuteNonQuery();
                 Transaction.Commit();
                 dr.Close();
@@ -90,7 +121,7 @@ values(sq_usuarios_cad.nextval,'" + pessoa.NOME + "','" + pessoa.USUARIO + "','"
         {
             conexaoOra = new OracleConnection(conexaoOracle);
             Command = conexaoOra.CreateCommand();            
-            Command.CommandText = @"update tbl_pessoa set senha = '" + pessoa.SENHA + "',acesso = 'SIM' WHERE IDPESSOA = " + pessoa.IDPESSOA + "";
+            Command.CommandText = @"update tbl_pessoa set senha = '" + pessoa.SENHA + "',acesso = '1' WHERE IDPESSOA = " + pessoa.IDPESSOA + "";
             conexaoOra.Open();
             Command.ExecuteNonQuery();          
             conexaoOra.Close();
@@ -157,7 +188,25 @@ values(sq_usuarios_cad.nextval,'" + pessoa.NOME + "','" + pessoa.USUARIO + "','"
             conexaoOra.Close();
             return pessoa;
         }
-        
+        public List<Pessoa> DDCVI(Pessoa pessoa)
+        {
+            List<Pessoa> pes = new List<Pessoa>();
+            conexaoOra = new OracleConnection(conexaoOracle);
+            Command = conexaoOra.CreateCommand();
+            Command.CommandText = @"select usuario from tbl_pessoa where Idpessoa='" + pessoa.IDPESSOA + "'";
+            conexaoOra.Open();
+            OracleDataReader dr = Command.ExecuteReader();
+            dr.Read();
+            if (dr.HasRows)
+            {
+                Pessoa pess = new Pessoa();
+                pess.USUARIO = dr["USUARIO"].ToString();
+                pes.Add(pess);
+            }
+            dr.Close();
+            conexaoOra.Close();
+            return pes;
+        }
   
     }
 }

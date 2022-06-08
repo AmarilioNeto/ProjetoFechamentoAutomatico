@@ -20,4 +20,5 @@ namespace ProjetoFechamentoAutomatico.Models.Formularios
         public string Unit { get; set; }
         public string Entradas { get; set; }
     }
+
 }
