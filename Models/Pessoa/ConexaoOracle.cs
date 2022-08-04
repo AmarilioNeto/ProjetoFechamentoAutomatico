@@ -18,11 +18,11 @@ namespace ProjetoFechamentoAutomatico.Models.Pessoa
     {
         //conexão com base de teste
                 public string conexaoOracle = @"DATA SOURCE=(DESCRIPTION=(ADDRESS_LIST=
-        (ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.29)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=tubdhmlg)));User Id=teste;Password=teste;";
+        (ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.29)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=tubdhmlg)));User Id=*****;Password=****;";
 
       // conexão com base de produção
 //        public string conexaoOracle = @"DATA SOURCE=(DESCRIPTION =(ADDRESS_LIST =
-//(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.10)(PORT = 1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME = tubdprd)));User Id = valenca;Password = valenca;";
+//(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.10)(PORT = 1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME = tubdprd)));User Id = *****;Password = *****;";
 
         public OracleConnection conexaoOra;
         public OracleCommand Command;
