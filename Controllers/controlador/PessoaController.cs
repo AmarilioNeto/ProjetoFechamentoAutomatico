@@ -347,7 +347,7 @@ namespace ProjetoFechamentoAutomatico.Controllers
 
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.EnableSsl = true;
-                smtp.Credentials = new System.Net.NetworkCredential("informa.ti@valenca.com.br", "!@m07a880");
+                smtp.Credentials = new System.Net.NetworkCredential("informa.ti@valenca.com.br", "******");
                 smtp.Send(mail);
                 TempData["sucesso"] = "Mensagem enviada com sucesso para email cadastrado";
                 return RedirectToAction(nameof(EsqueciSenha));
